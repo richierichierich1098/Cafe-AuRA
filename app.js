@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let preloaded1 = false;
     let preloaded2 = false;
 
-    // Cover drawing algorithm
-    function drawImageCover(ctx, canvas, img) {
+    // Cover drawing algorithm with High-DPI and anchor-offset support
+    function drawImageCover(ctx, canvas, img, anchorX = 0.5) {
         if (!ctx || !canvas || !img) return;
         const w = canvas.width;
         const h = canvas.height;
@@ -130,7 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (imgRatio > canvasRatio) {
             drawH = h;
             drawW = h * imgRatio;
-            drawX = (w - drawW) / 2;
+            // Center horizontal crop based on anchor coordinate
+            drawX = (w * anchorX) - (drawW / 2);
+            // Prevent sliding past the physical bounds
+            if (drawX > 0) drawX = 0;
+            if (drawX + drawW < w) drawX = w - drawW;
             drawY = 0;
         } else {
             drawW = w;
@@ -146,7 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const img = framesHero[rounded];
         if (img && img.complete && ctxHero) {
             ctxHero.clearRect(0, 0, canvasHero.width, canvasHero.height);
-            drawImageCover(ctxHero, canvasHero, img);
+            // Shift the cup center to the right (anchorX = 0.65) on desktop to stay visible in the wave
+            const isDesktop = window.innerWidth > 992;
+            const anchor = isDesktop ? 0.65 : 0.5;
+            drawImageCover(ctxHero, canvasHero, img, anchor);
         }
     }
 
@@ -169,19 +176,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
         if (canvasHero) {
-            canvasHero.width = canvasHero.parentElement.offsetWidth;
-            canvasHero.height = canvasHero.parentElement.offsetHeight;
+            const parent = canvasHero.parentElement;
+            canvasHero.width = parent.offsetWidth * dpr;
+            canvasHero.height = parent.offsetHeight * dpr;
             drawFrameHero();
         }
         if (canvas1) {
-            canvas1.width = canvas1.parentElement.offsetWidth;
-            canvas1.height = canvas1.parentElement.offsetHeight;
+            const parent = canvas1.parentElement;
+            canvas1.width = parent.offsetWidth * dpr;
+            canvas1.height = parent.offsetHeight * dpr;
             drawFrame1();
         }
         if (canvas2) {
-            canvas2.width = canvas2.parentElement.offsetWidth;
-            canvas2.height = canvas2.parentElement.offsetHeight;
+            const parent = canvas2.parentElement;
+            canvas2.width = parent.offsetWidth * dpr;
+            canvas2.height = parent.offsetHeight * dpr;
             drawFrame2();
         }
     }
