@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuRA - Coffee, Composed Like Poetry | Sindhu Bhavan, Ahmedabad</title>
+    <meta name="description" content="AuRA is a luxury cafe and dessert sanctuary on Sindhubhavan Road, opposite Hotel Taj, Ahmedabad. Experience specialty coffees, artisanal pastries, and moments made to linger.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Custom Luxury Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-ring"></div>
+
+    <!-- Navigation Header -->
+    <header>
+        <a href="#" class="logo hover-target">
+            <span class="logo-text">AuRA</span>
+            <span class="logo-sub">PREMIUM COFFEE & DESSERTS</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero" class="active hover-target">Home</a></li>
+            <li><a href="#stories" class="hover-target">Stories</a></li>
+            <li><a href="#moments" class="hover-target">Moments</a></li>
+            <li><a href="#menu" class="hover-target">Savour Menu</a></li>
+            <li><a href="#booking" class="hover-target">Book Table</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="#booking" class="btn-luxury btn-outline header-desktop-cta hover-target">Book Table</a>
+            <button class="mobile-nav-toggle hover-target" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Section 1: Hero (Reference Image 2 - Replaced overlapping frames with premium latte art video) -->
+    <main class="poetry-container" id="hero" style="min-height: 90vh; display: flex; align-items: center;">
+        <div class="poetry-grid">
+            <div class="poetry-left">
+                <span class="label-sans" style="color: var(--terracotta); margin-bottom: 20px; display: inline-block;">Welcome to AuRA</span>
+                <h1>Coffee,<br>Composed Like <span class="serif-italic">Poetry.</span></h1>
+                <p class="poetry-intro">An artistic cafe for slow sips, quiet thoughts & beautiful days, situated opposite Hotel Taj on Sindhu Bhavan Road.</p>
+                
+                <div class="poetry-ctas">
+                    <a href="#booking" class="btn-luxury hover-target">Visit the Cafe</a>
+                    <a href="#menu" class="btn-luxury btn-outline hover-target">Explore the Menu</a>
+                </div>
+            </div>
+
+            <div class="poetry-right">
+                <div class="poetry-hero-video-frame hover-target">
+                    <video autoplay loop muted playsinline>
+                        <source src="Coffee_cup_with_latte_art.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll-Driven Video B-Roll Section 1 (Ad 1 Frame Sequence Scrubbing) -->
+    <div class="cinematic-wrapper" id="broll-scrub-container-1">
+        <div class="story-sticky">
+            <canvas class="story-canvas" id="broll-canvas-1"></canvas>
+            <div class="broll-overlay" style="z-index: 2;"></div>
+            <div class="story-content-container" style="z-index: 3; display: flex; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%;">
+                <div class="story-content active" id="broll-text-1" style="opacity: 1; pointer-events: auto; position: static; transform: none; max-width: 750px; padding: 0 20px;">
+                    <span class="label-sans" style="color: var(--gold-light); margin-bottom: 15px; display: block;">Cinematic Scroll-Play • Ad 1</span>
+                    <h2 style="color: var(--crema); font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);">Handcrafted Brews. <span class="serif-italic" style="color: var(--crema);">Slow Mornings.</span></h2>
+                    <p style="color: var(--dusty-rose-light); font-size: 1.15rem; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);">Every scroll guides the pour. Experience coffee roasted to absolute sensory perfection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Stories (Reference Image 0 - Simplified) -->
+    <section class="stories-container" id="stories">
+        <div class="stories-header">
+            <span class="label-sans" style="color: var(--terracotta); margin-bottom: 10px; display: inline-block;">Journal & Musings</span>
+            <h1>Stories Steeped in <span class="serif-italic">Warmth.</span></h1>
+            <p>A journal of people, places, and little moments that make Cafe AuRA home.</p>
+        </div>
+
+        <div class="stories-grid-layout" style="max-width: 1000px; grid-template-columns: 1.1fr 0.9fr;">
+            <!-- Card 1: Guest Stories Arch Card -->
+            <div class="stories-card-item stories-arch-card hover-target">
+                <div class="stories-arch-img">
+                    <img src="cinnamon_roll.jpeg" alt="Glazed pecan cinnamon roll on plate inside Cafe AuRA">
+                </div>
+                <div class="stories-arch-content">
+                    <span class="stories-card-label">Chef's Special</span>
+                    <p class="stories-card-quote">“Every glaze, crumb, and nut represents an unhurried search for flavor.”</p>
+                    <span class="stories-card-author">— Pastry Kitchen</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Dark Green Bento (Bespoke Brew) -->
+            <div class="stories-card-item forest-green-bg hover-target">
+                <div>
+                    <span class="stories-card-label">Brew Counter</span>
+                    <h3>Bespoke Brew Bar</h3>
+                    <p>Cozy mornings, rich single-origin blends, and the warm, slow steam that starts your day on a perfect note. Let our baristas guide you through our organic options.</p>
+                </div>
+                <div style="text-align: right; margin-top: 20px;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.2">
+                        <path d="M12 2C12 2 14 6 14 10C14 11.5 13 13 12 13C11 13 10 11.5 10 10C10 6 12 2 12 2Z"></path>
+                        <path d="M12 13C12 13 16 14 18 17C19.5 19 18.5 21 16 21C14 21 13 19.5 13 18C13 15 12 13 12 13Z"></path>
+                        <path d="M12 13C12 13 8 14 6 17C4.5 19 5.5 21 8 21C10 21 11 19.5 11 18C11 15 12 13 12 13Z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="glimpse-section">
+            <h3>A Glimpse of Our World</h3>
+            <div class="glimpse-grid">
+                <div class="glimpse-thumb hover-target">
+                    <img src="cafe_entrance.jpeg" alt="AuRA cafe entrance door design">
+                </div>
+                <div class="glimpse-thumb hover-target">
+                    <img src="interior.jpeg" alt="Inside Cafe AuRA table setup">
+                </div>
+                <div class="glimpse-thumb hover-target">
+                    <img src="cafe_corner.jpeg" alt="Cozy corners inside Cafe AuRA">
+                </div>
+                <div class="glimpse-thumb hover-target">
+                    <img src="cappuccino.jpeg" alt="Freshly poured espresso cup">
+                </div>
+                <div class="glimpse-thumb hover-target">
+                    <img src="pastry_counter.jpeg" alt="Pastry showcase window display">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll-Driven Video B-Roll Section 2 (Ad 2 Frame Sequence Scrubbing) -->
+    <div class="cinematic-wrapper" id="broll-scrub-container-2">
+        <div class="story-sticky">
+            <canvas class="story-canvas" id="broll-canvas-2"></canvas>
+            <div class="broll-overlay" style="z-index: 2;"></div>
+            <div class="story-content-container" style="z-index: 3; display: flex; justify-content: center; align-items: center; text-align: center; width: 100%; height: 100%;">
+                <div class="story-content active" id="broll-text-2" style="opacity: 1; pointer-events: auto; position: static; transform: none; max-width: 750px; padding: 0 20px;">
+                    <span class="label-sans" style="color: var(--gold-light); margin-bottom: 15px; display: block;">Cinematic Scroll-Play • Ad 2</span>
+                    <h2 style="color: var(--crema); font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);">Artisanal Desserts. <span class="serif-italic" style="color: var(--crema);">Composed for Taste.</span></h2>
+                    <p style="color: var(--dusty-rose-light); font-size: 1.15rem; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);">Every glaze, crumb, and gold leaf represents an unhurried search for flavor perfection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Moments (Reference Image 1) -->
+    <section class="moments-container" id="moments">
+        <div class="moments-wavy-layout">
+            <div class="moments-sidebar-col">
+                <div class="moments-card-item hover-target">
+                    <div class="moments-card-img-wrap mask-croissant">
+                        <img src="croissant_plate.jpeg" alt="Crispy croissant on a rustic plate at Cafe AuRA">
+                    </div>
+                    <div class="moments-card-content">
+                        <span class="label-sans" style="color: var(--terracotta); margin-bottom: 5px; display: block;">8:00 AM - 11:00 AM</span>
+                        <h3>Morning Rituals</h3>
+                        <p>Thoughtful pour-overs and warm, buttery croissants that set a slow, gentle tone for your day.</p>
+                    </div>
+                </div>
+
+                <div class="moments-card-item hover-target">
+                    <div class="moments-card-img-wrap mask-laptop">
+                        <img src="woman_working.jpeg" alt="Woman working on a laptop at Cafe AuRA">
+                    </div>
+                    <div class="moments-card-content">
+                        <span class="label-sans" style="color: var(--terracotta); margin-bottom: 5px; display: block;">11:00 AM - 4:00 PM</span>
+                        <h3>Work & Unwind</h3>
+                        <p>Creative workspaces, super-fast Wi-Fi, and enough caffeine energy to keep you centered in your flow.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="moments-center-col">
+                <div class="moments-heading">
+                    <span class="label-sans" style="color: var(--terracotta); margin-bottom: 15px; display: block;">Atmosphere</span>
+                    <h1 style="font-size: 3.5rem;">Moments<br>Made to <span class="serif-italic">Linger.</span></h1>
+                    <p>A premium room for every part of your day—thoughtfully crafted for comfort, creativity, and connection.</p>
+                </div>
+                <div class="moments-center-frame hover-target">
+                    <img src="cappuccino.jpeg" alt="AuRA signature cappuccino in ceramic mug">
+                </div>
+            </div>
+
+            <div class="moments-sidebar-col">
+                <div class="moments-card-item hover-target">
+                    <div class="moments-card-img-wrap mask-laughing">
+                        <img src="women_laughing.jpeg" alt="Two women laughing and sharing brunch plates at Cafe AuRA">
+                    </div>
+                    <div class="moments-card-content">
+                        <span class="label-sans" style="color: var(--terracotta); margin-bottom: 5px; display: block;">12:00 PM - 4:00 PM</span>
+                        <h3>Brunch & Conversation</h3>
+                        <p>Artisanal sweet and savory plates, rich coffee pairings, and beautiful space to share with friends.</p>
+                    </div>
+                </div>
+
+                <div class="moments-card-item hover-target">
+                    <div class="moments-card-img-wrap mask-window">
+                        <img src="window_coffee.jpeg" alt="Coffee cup sitting on a sunny window sill">
+                    </div>
+                    <div class="moments-card-content">
+                        <span class="label-sans" style="color: var(--terracotta); margin-bottom: 5px; display: block;">5:00 PM - 8:00 PM</span>
+                        <h3>Golden Hour Coffee</h3>
+                        <p>Warm horizontal light rays, soft jazz, and quiet space to stay a little longer as daylight fades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="moments-features-row">
+            <div class="moment-feature-block">
+                <div class="moment-feature-icon">a</div>
+                <h4>Artisanal Coffee</h4>
+                <p>Ethically sourced single-origin organic beans ground fresh for every single pour.</p>
+            </div>
+            <div class="moment-feature-block">
+                <div class="moment-feature-icon">b</div>
+                <h4>Handcrafted Pastries</h4>
+                <p>Baked fresh in-house daily with rich butter, organic flour, and seasonal fruits.</p>
+            </div>
+            <div class="moment-feature-block">
+                <div class="moment-feature-icon">c</div>
+                <h4>Inspired Space</h4>
+                <p>Designed beautifully to inspire creative thoughts, deep work, or quiet reflection.</p>
+            </div>
+            <div class="moment-feature-block">
+                <div class="moment-feature-icon">d</div>
+                <h4>Community First</h4>
+                <p>A welcoming dessert sanctuary built to host laughter, stories, and connections.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transition divider -->
+    <svg class="wavy-divider" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,60 C320,120 420,-20 720,60 C1020,140 1120,20 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+
+    <!-- Section 4: Savour Menu (Reference Image 3 - Simplified) -->
+    <section class="savour-container" id="menu">
+        <div class="savour-main-grid">
+            <div class="savour-intro-panel hover-target">
+                <span class="label-sans" style="color: var(--gold-light); margin-bottom: 20px; display: block;">Chef's Selection</span>
+                <h1>A Menu Made for <span class="serif-italic">Slow Mornings.</span></h1>
+                <p>Thoughtful Ingredients. Artful Flavors. Time Well Spent.</p>
+            </div>
+
+            <div class="savour-right-frame">
+                <div class="savour-wavy-photo hover-target">
+                    <img src="espresso_art.jpeg" alt="Hot espresso cup with detailed leaf latte art at Cafe AuRA">
+                </div>
+            </div>
+        </div>
+
+        <div class="savour-featured-title">
+            <span class="label-sans" style="color: var(--terracotta); margin-bottom: 10px; display: block;">AuRA Specialties</span>
+            <h2>Signature Creations</h2>
+        </div>
+
+        <div class="savour-arched-row" style="max-width: 1000px; grid-template-columns: repeat(4, 1fr);">
+            <div class="savour-arch-item hover-target">
+                <div class="savour-item-img-wrap">
+                    <img src="iced_coffee.jpeg" alt="Signature Layered Iced Vanilla Coffee">
+                </div>
+                <h3>Signature Coffee</h3>
+                <span class="savour-price">₹320</span>
+            </div>
+
+            <div class="savour-arch-item hover-target">
+                <div class="savour-item-img-wrap">
+                    <img src="cinnamon_roll.jpeg" alt="Warm cinnamon brioche roll with cream glaze">
+                </div>
+                <h3>Seasonal Pastry</h3>
+                <span class="savour-price">₹340</span>
+            </div>
+
+            <div class="savour-arch-item hover-target">
+                <div class="savour-item-img-wrap">
+                    <img src="Cocoa_powder_dusted_surface.jpeg" alt="Winter spiced coffee with orange and cinnamon at Cafe AuRA">
+                </div>
+                <h3>Winter Spiced Coffee</h3>
+                <span class="savour-price">₹380</span>
+            </div>
+
+            <div class="savour-arch-item hover-target">
+                <div class="savour-item-img-wrap">
+                    <img src="chocolate_cake.jpeg" alt="Chocolate cake entremet topped with gold leaf and raspberry">
+                </div>
+                <h3>Three-Layer Mousse</h3>
+                <span class="savour-price">₹590</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transition divider -->
+    <svg class="wavy-divider-reverse" viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,60 C320,120 420,-20 720,60 C1020,140 1120,20 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+
+    <!-- Section 5: Reservations -->
+    <section class="booking-page-container" id="booking">
+        <div class="booking-box">
+            <div class="booking-info">
+                <div>
+                    <span class="label-sans" style="color: var(--gold-light); margin-bottom: 10px; display: block;">Reservations</span>
+                    <h3>Secure Your Sanctuary</h3>
+                    <p style="margin-bottom: 30px;">Reserve a quiet table in your preferred zone of Cafe AuRA, situated opposite Hotel Taj on Sindhu Bhavan Road.</p>
+                </div>
+                <ul class="booking-details-list">
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,12,20ZM12.5,7H11v6l5.2,3.2,0.8-1.3-4.5-2.7V7Z"/></svg>
+                        <span>8:00 AM - 12:00 AM Daily</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12,2a8,8,0,0,0-8,8c0,5.25,8,12,8,12s8-6.75,8-12A8,8,0,0,0,12,2Zm0,11a3,3,0,1,1,3-3A3,3,0,0,1,12,13Z"/></svg>
+                        <span>Sindhu Bhavan Road, Ahmedabad</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="booking-form-wrapper">
+                <form class="booking-form" id="reservation-form">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="booking-name">Full Name</label>
+                            <input type="text" id="booking-name" class="form-input hover-target" placeholder="E.g., Honey Shah" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-phone">Phone Number</label>
+                            <input type="tel" id="booking-phone" class="form-input hover-target" placeholder="E.g., +91 99999 99999" required>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="booking-date">Date</label>
+                            <input type="date" id="booking-date" class="form-input hover-target" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-guests">Number of Guests</label>
+                            <select id="booking-guests" class="form-input hover-target" required>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="8">8 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Preferred Seating Area</label>
+                        <div class="zone-selector">
+                            <div class="zone-card selected hover-target" data-zone="Olive Canopy">
+                                <h4>Olive Canopy</h4>
+                                <p>Centered under indoor olive trees</p>
+                            </div>
+                            <div class="zone-card hover-target" data-zone="Reading Nook">
+                                <h4>Reading Nook</h4>
+                                <p>Soft velvet armchairs & books</p>
+                            </div>
+                            <div class="zone-card hover-target" data-zone="Window View">
+                                <h4>Window View</h4>
+                                <p>Shed in soft morning daylight</p>
+                            </div>
+                            <div class="zone-card hover-target" data-zone="Espresso Bar">
+                                <h4>Bar Counter</h4>
+                                <p>Near our artisanal brewers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-luxury hover-target" style="align-self: flex-start; margin-top: 10px;">Reserve Table</button>
+                </form>
+
+                <div class="booking-success-view" id="success-view">
+                    <div class="success-icon">✓</div>
+                    <h3>Reservation Composed!</h3>
+                    <p style="color: var(--espresso-muted); font-size: 0.95rem;">A seat has been thoughtfully set aside for you. We look forward to welcoming you at Sindhu Bhavan Road.</p>
+                    
+                    <div style="background-color: var(--crema-dark); padding: 20px; border-radius: 16px; width: 100%; text-align: left; font-family: var(--font-sans); font-size: 0.85rem; color: var(--espresso-muted); line-height: 1.6; margin-bottom: 10px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
+                            <span>Booking Code:</span>
+                            <strong style="color:var(--espresso);" id="confirm-code">AURA-9284</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
+                            <span>Guest Count:</span>
+                            <strong style="color:var(--espresso);" id="confirm-guests">4 Guests</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
+                            <span>Space Selected:</span>
+                            <strong style="color:var(--espresso);" id="confirm-zone">Olive Canopy</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>Date & Time:</span>
+                            <strong style="color:var(--espresso);" id="confirm-datetime">July 25, 2026</strong>
+                        </div>
+                    </div>
+                    <button class="btn-luxury btn-outline hover-target" id="new-booking-btn" style="margin-top: 10px;">New Booking</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>AuRA</h2>
+                <p>A premium, aesthetic dessert sanctuary bringing slow-crafted moments and sensory pastry arts to Ahmedabad.</p>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social-link hover-target">Instagram</a>
+                    <a href="#" class="footer-social-link hover-target">Facebook</a>
+                    <a href="#" class="footer-social-link hover-target">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Vibe & Navigation</h3>
+                <ul class="footer-links-list">
+                    <li><a href="#hero" class="hover-target">Home</a></li>
+                    <li><a href="#stories" class="hover-target">Our Stories</a></li>
+                    <li><a href="#moments" class="hover-target">Daily Moments</a></li>
+                    <li><a href="#menu" class="hover-target">Savour Menu</a></li>
+                    <li><a href="#booking" class="hover-target">Book Table</a></li>
+                </ul>
+            </div>
+            <div class="footer-brand">
+                <h3 class="label-sans" style="color: var(--gold-light); margin-bottom: 25px;">Sindhu Bhavan Location</h3>
+                <p style="margin-bottom: 15px;">Opposite Hotel Taj, Sindhu Bhavan Road, Bodakdev, Ahmedabad, Gujarat 380054</p>
+                <p style="margin-bottom: 30px;">Open Daily: 8:00 AM - 12:00 AM</p>
+                <div class="footer-map-wrapper hover-target">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.690833907579!2d72.50293117585542!3d23.035123916172605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84df24be98e3%3A0xe5a3c10cc52c9db1!2sSindhu%20Bhavan%20Rd%2C%20Bodakdev%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1721660000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AuRA Cafés & Premium Desserts. All rights reserved.</p>
+            <p>Designed opposite Hotel Taj, Ahmedabad.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
