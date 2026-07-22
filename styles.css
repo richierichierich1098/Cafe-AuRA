@@ -379,33 +379,31 @@ header.scrolled {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 var(--container-padding);
     overflow: hidden;
 }
 
 .poetry-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-@media (max-width: 992px) {
-    .poetry-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
+    grid-template-columns: 1fr 1fr; /* 50/50 split screen */
+    width: 100%;
+    height: 100%;
+    gap: 0;
 }
 
 .poetry-left {
-    max-width: 580px;
+    padding-left: var(--container-padding);
+    padding-right: 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    z-index: 2;
 }
 
 @media (max-width: 992px) {
     .poetry-left {
+        padding: 100px var(--container-padding) 40px var(--container-padding);
+        text-align: center;
         margin: 0 auto;
     }
 }
@@ -418,14 +416,15 @@ header.scrolled {
 
 @media (max-width: 768px) {
     .poetry-left h1 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
     }
 }
 
 .poetry-left .poetry-intro {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--espresso-muted);
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    max-width: 480px;
 }
 
 .poetry-ctas {
@@ -440,22 +439,23 @@ header.scrolled {
 }
 
 .poetry-right {
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
     position: relative;
+    z-index: 1;
 }
 
-/* PREMIUM HERO LATTE ART VIDEO CANVAS DESIGN */
+/* PREMIUM HERO LATTE ART ABSTRACT WAVY VIDEO CANVAS DESIGN (Reference Image 2) */
 .poetry-hero-video-frame {
     width: 100%;
-    max-width: 440px;
-    height: 560px;
-    border-radius: 220px 220px 0 0; /* Premium Arch Shape */
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(37, 30, 27, 0.12);
-    transition: var(--transition-smooth);
-    border: 1px solid rgba(37, 30, 27, 0.08);
+    height: 100%;
+    clip-path: url(#abstract-wavy-desktop);
     background-color: var(--crema-dark);
+    transition: var(--transition-smooth);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
 }
 
 .hero-canvas-scrub {
@@ -466,30 +466,21 @@ header.scrolled {
     transition: var(--transition-smooth);
 }
 
-.poetry-hero-video-frame:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 40px 80px rgba(37, 30, 27, 0.18);
-}
-
 .poetry-hero-video-frame:hover .hero-canvas-scrub {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 @media (max-width: 992px) {
-    .hero-sticky-container {
-        padding-top: 80px;
-        align-items: center;
+    .poetry-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1.1fr 0.9fr;
+    }
+    .poetry-right {
+        height: 100%;
+        width: 100%;
     }
     .poetry-hero-video-frame {
-        height: 380px;
-        border-radius: 190px 190px 0 0;
-    }
-}
-
-@media (max-width: 576px) {
-    .poetry-hero-video-frame {
-        height: 300px;
-        border-radius: 150px 150px 0 0;
+        clip-path: url(#abstract-wavy-mobile);
     }
 }
 
