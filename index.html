@@ -36,30 +36,29 @@
         </div>
     </header>
 
-    <!-- Section 1: Hero (Reference Image 2 - Replaced overlapping frames with premium latte art video) -->
-    <main class="poetry-container" id="hero" style="min-height: 90vh; display: flex; align-items: center;">
-        <div class="poetry-grid">
-            <div class="poetry-left">
-                <span class="label-sans" style="color: var(--terracotta); margin-bottom: 20px; display: inline-block;">Welcome to AuRA</span>
-                <h1>Coffee,<br>Composed Like <span class="serif-italic">Poetry.</span></h1>
-                <p class="poetry-intro">An artistic cafe for slow sips, quiet thoughts & beautiful days, situated opposite Hotel Taj on Sindhu Bhavan Road.</p>
-                
-                <div class="poetry-ctas">
-                    <a href="#booking" class="btn-luxury hover-target">Visit the Cafe</a>
-                    <a href="#menu" class="btn-luxury btn-outline hover-target">Explore the Menu</a>
+    <!-- Section 1: Hero (Latte Art Scroll-Scrub Pinned Design) -->
+    <div class="hero-scrub-wrapper" id="hero-scrub-container">
+        <div class="hero-sticky-container" id="hero">
+            <div class="poetry-grid">
+                <div class="poetry-left">
+                    <span class="label-sans" style="color: var(--terracotta); margin-bottom: 20px; display: inline-block;">Welcome to AuRA</span>
+                    <h1>Coffee,<br>Composed Like <span class="serif-italic">Poetry.</span></h1>
+                    <p class="poetry-intro">An artistic cafe for slow sips, quiet thoughts & beautiful days, situated opposite Hotel Taj on Sindhu Bhavan Road.</p>
+                    
+                    <div class="poetry-ctas">
+                        <a href="#booking" class="btn-luxury hover-target">Visit the Cafe</a>
+                        <a href="#menu" class="btn-luxury btn-outline hover-target">Explore the Menu</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="poetry-right">
-                <div class="poetry-hero-video-frame hover-target">
-                    <video autoplay loop muted playsinline>
-                        <source src="Coffee_cup_with_latte_art.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="poetry-right">
+                    <div class="poetry-hero-video-frame">
+                        <canvas id="hero-canvas" class="hero-canvas-scrub"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Scroll-Driven Video B-Roll Section 1 (Ad 1 Frame Sequence Scrubbing) -->
     <div class="cinematic-wrapper" id="broll-scrub-container-1">

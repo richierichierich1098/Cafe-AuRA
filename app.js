@@ -87,6 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================== */
     const TOTAL_FRAMES = 120;
     
+    // Canvas Hero references (Coffee_cup_with_latte_art.mp4)
+    const canvasHero = document.getElementById('hero-canvas');
+    const ctxHero = canvasHero ? canvasHero.getContext('2d') : null;
+    const framesHero = [];
+    let loadedHero = 0;
+    let targetFrameHero = 0;
+    let currentFrameHero = 0;
+
     // Canvas 1 references (Ad 1.mp4)
     const canvas1 = document.getElementById('broll-canvas-1');
     const ctx1 = canvas1 ? canvas1.getContext('2d') : null;
@@ -103,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetFrame2 = 0;
     let currentFrame2 = 0;
 
+    let preloadedHero = false;
     let preloaded1 = false;
     let preloaded2 = false;
 
@@ -132,6 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.drawImage(img, drawX, drawY, drawW, drawH);
     }
 
+    function drawFrameHero() {
+        const rounded = Math.max(0, Math.min(Math.floor(currentFrameHero), TOTAL_FRAMES - 1));
+        const img = framesHero[rounded];
+        if (img && img.complete && ctxHero) {
+            ctxHero.clearRect(0, 0, canvasHero.width, canvasHero.height);
+            drawImageCover(ctxHero, canvasHero, img);
+        }
+    }
+
     function drawFrame1() {
         const rounded = Math.max(0, Math.min(Math.floor(currentFrame1), TOTAL_FRAMES - 1));
         const img = frames1[rounded];
@@ -151,6 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function resizeCanvas() {
+        if (canvasHero) {
+            canvasHero.width = canvasHero.parentElement.offsetWidth;
+            canvasHero.height = canvasHero.parentElement.offsetHeight;
+            drawFrameHero();
+        }
         if (canvas1) {
             canvas1.width = canvas1.parentElement.offsetWidth;
             canvas1.height = canvas1.parentElement.offsetHeight;
@@ -160,6 +183,24 @@ document.addEventListener('DOMContentLoaded', () => {
             canvas2.width = canvas2.parentElement.offsetWidth;
             canvas2.height = canvas2.parentElement.offsetHeight;
             drawFrame2();
+        }
+    }
+
+    function preloadSequenceHero() {
+        if (!canvasHero) return;
+        for (let i = 0; i < TOTAL_FRAMES; i++) {
+            const img = new Image();
+            const frameNumStr = String(i).padStart(4, '0');
+            img.onload = () => {
+                loadedHero++;
+                if (loadedHero === TOTAL_FRAMES) {
+                    preloadedHero = true;
+                    console.log("Hero Sequence loaded.");
+                    if (preloadedHero && preloaded1 && preloaded2) resizeCanvas();
+                }
+            };
+            img.src = `frames/scene-hero/frame_${frameNumStr}.jpg`;
+            framesHero.push(img);
         }
     }
 
@@ -173,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (loaded1 === TOTAL_FRAMES) {
                     preloaded1 = true;
                     console.log("Sequence 1 loaded.");
-                    if (preloaded1 && preloaded2) resizeCanvas();
+                    if (preloadedHero && preloaded1 && preloaded2) resizeCanvas();
                 }
             };
             img.src = `frames/scene-0/frame_${frameNumStr}.jpg`;
@@ -191,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (loaded2 === TOTAL_FRAMES) {
                     preloaded2 = true;
                     console.log("Sequence 2 loaded.");
-                    if (preloaded1 && preloaded2) resizeCanvas();
+                    if (preloadedHero && preloaded1 && preloaded2) resizeCanvas();
                 }
             };
             img.src = `frames/scene-1/frame_${frameNumStr}.jpg`;
@@ -200,6 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function tick() {
+        if (preloadedHero) {
+            currentFrameHero += (targetFrameHero - currentFrameHero) * 0.15;
+            if (Math.abs(targetFrameHero - currentFrameHero) < 0.01) currentFrameHero = targetFrameHero;
+            drawFrameHero();
+        }
         if (preloaded1) {
             currentFrame1 += (targetFrame1 - currentFrame1) * 0.15;
             if (Math.abs(targetFrame1 - currentFrame1) < 0.01) currentFrame1 = targetFrame1;
@@ -213,7 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(tick);
     }
 
-    if (canvas1 || canvas2) {
+    if (canvasHero || canvas1 || canvas2) {
+        preloadSequenceHero();
         preloadSequence1();
         preloadSequence2();
         window.addEventListener('resize', resizeCanvas);
@@ -253,6 +300,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.classList.add('active');
                 }
             });
+        }
+
+        // Hero calculations
+        const scrubHero = document.getElementById('hero-scrub-container');
+        if (scrubHero) {
+            const rect = scrubHero.getBoundingClientRect();
+            const containerHeight = rect.height;
+            const scrollDistance = -rect.top;
+            const maxScroll = containerHeight - window.innerHeight;
+            if (scrollDistance >= 0 && maxScroll > 0) {
+                const progress = Math.min(scrollDistance / maxScroll, 1);
+                targetFrameHero = Math.floor(progress * (TOTAL_FRAMES - 1));
+            }
         }
 
         // B-Roll 1 calculations
