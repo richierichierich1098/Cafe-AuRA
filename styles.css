@@ -52,7 +52,7 @@
 html {
     scroll-behavior: smooth;
     background-color: #FAF7F2; /* Base solid color under transparent body */
-    overflow-x: visible !important;
+    overflow: visible !important;
 }
 
 body {
@@ -61,7 +61,7 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
-    overflow-x: visible !important;
+    overflow: visible !important;
     -webkit-font-smoothing: antialiased;
     position: relative;
 }
@@ -1535,6 +1535,7 @@ footer::before {
         height: 200vh !important; /* 2 screens of scroll-play duration */
         width: 100% !important;
         background-color: var(--crema);
+        overflow: visible !important;
     }
     
     .hero-sticky-container {
@@ -1614,7 +1615,7 @@ footer::before {
         background-color: rgba(37, 30, 27, 0.95);
         padding: 0;
         margin: 0;
-        overflow: visible;
+        overflow: visible !important;
     }
 
     .story-sticky {
