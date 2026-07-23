@@ -469,5 +469,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 400);
             });
         }
+
+        // Mobile JS-based pinning manager (failsafe for CSS sticky quirks)
+        function initMobilePinning(wrapperId, stickySelector) {
+            const wrapper = document.getElementById(wrapperId);
+            if (!wrapper) return;
+            const sticky = wrapper.querySelector(stickySelector);
+            if (!sticky) return;
+
+            function updatePinning() {
+                if (window.innerWidth > 992) {
+                    // Reset to CSS default for desktop
+                    sticky.style.position = '';
+                    sticky.style.top = '';
+                    sticky.style.bottom = '';
+                    return;
+                }
+
+                const rect = wrapper.getBoundingClientRect();
+                const wrapperHeight = rect.height;
+                const viewportHeight = window.innerHeight;
+                const scrollOffset = -rect.top;
+                const maxScroll = wrapperHeight - viewportHeight;
+
+                if (scrollOffset < 0) {
+                    sticky.style.position = 'absolute';
+                    sticky.style.top = '0';
+                    sticky.style.bottom = 'auto';
+                } else if (scrollOffset > maxScroll) {
+                    sticky.style.position = 'absolute';
+                    sticky.style.top = 'auto';
+                    sticky.style.bottom = '0';
+                } else {
+                    sticky.style.position = 'fixed';
+                    sticky.style.top = '0';
+                    sticky.style.bottom = 'auto';
+                }
+            }
+
+            window.addEventListener('scroll', updatePinning);
+            window.addEventListener('resize', updatePinning);
+            // Run instantly
+            updatePinning();
+        }
+
+        // Initialize mobile JS pinning
+        initMobilePinning('hero-scrub-container', '.hero-sticky-container');
+        initMobilePinning('broll-scrub-container-1', '.story-sticky');
+        initMobilePinning('broll-scrub-container-2', '.story-sticky');
     }
 });
