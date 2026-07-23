@@ -107,6 +107,15 @@ body::before {
     transition: transform 0.1s cubic-bezier(0.1, 0.8, 0.3, 1), width 0.3s, height 0.3s, border-color 0.3s;
 }
 
+@media (max-width: 1024px) {
+    #custom-cursor, #custom-cursor-ring {
+        display: none !important;
+    }
+    * {
+        cursor: auto !important;
+    }
+}
+
 /* Hover States for Cursor */
 .hover-target:hover ~ #custom-cursor {
     width: 12px;
@@ -367,7 +376,25 @@ header.scrolled {
 
 @media (max-width: 992px) {
     .nav-links {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(250, 247, 242, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 0 var(--container-padding);
+        gap: 20px;
+        z-index: 999;
+        border-bottom: 1px solid rgba(37, 30, 27, 0.05);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links.mobile-active {
+        max-height: 400px;
+        padding: 30px var(--container-padding);
     }
     .mobile-nav-toggle {
         display: flex;
@@ -1478,5 +1505,14 @@ footer::before {
         flex-direction: column;
         gap: 15px;
         text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .cinematic-wrapper {
+        height: 180vh; /* Shorter scroll range for mobile views */
+    }
+    .hero-scrub-wrapper {
+        height: 180vh; /* Shorter scroll range for mobile views */
     }
 }

@@ -383,22 +383,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (isOpen) {
                 navLinksContainer.classList.remove('mobile-active');
-                navLinksContainer.removeAttribute('style');
                 mobileToggle.querySelectorAll('span').forEach(s => s.style.transform = 'none');
             } else {
                 navLinksContainer.classList.add('mobile-active');
-                navLinksContainer.style.display = 'flex';
-                navLinksContainer.style.flexDirection = 'column';
-                navLinksContainer.style.position = 'absolute';
-                navLinksContainer.style.top = '100%';
-                navLinksContainer.style.left = '0';
-                navLinksContainer.style.width = '100%';
-                navLinksContainer.style.backgroundColor = 'var(--crema)';
-                navLinksContainer.style.padding = '30px var(--container-padding)';
-                navLinksContainer.style.borderBottom = '1px solid rgba(37, 30, 27, 0.05)';
-                navLinksContainer.style.gap = '20px';
-                navLinksContainer.style.zIndex = '999';
-
                 mobileToggle.querySelectorAll('span')[0].style.transform = 'translateY(7.5px) rotate(45deg)';
                 mobileToggle.querySelectorAll('span')[1].style.transform = 'scale(0)';
                 mobileToggle.querySelectorAll('span')[2].style.transform = 'translateY(-7.5px) rotate(-45deg)';
@@ -409,7 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 992) {
                     navLinksContainer.classList.remove('mobile-active');
-                    navLinksContainer.removeAttribute('style');
                     mobileToggle.querySelectorAll('span').forEach(s => s.style.transform = 'none');
                 }
             });
