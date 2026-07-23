@@ -52,6 +52,7 @@
 html {
     scroll-behavior: smooth;
     background-color: #FAF7F2; /* Base solid color under transparent body */
+    overflow-x: visible !important;
 }
 
 body {
@@ -60,7 +61,7 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
-    overflow-x: clip;
+    overflow-x: visible !important;
     -webkit-font-smoothing: antialiased;
     position: relative;
 }
