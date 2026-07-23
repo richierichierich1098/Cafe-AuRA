@@ -493,17 +493,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const maxScroll = wrapperHeight - viewportHeight;
 
                 if (scrollOffset < 0) {
-                    sticky.style.position = 'absolute';
-                    sticky.style.top = '0';
-                    sticky.style.bottom = 'auto';
+                    sticky.style.setProperty('position', 'absolute', 'important');
+                    sticky.style.setProperty('top', '0', 'important');
+                    sticky.style.setProperty('bottom', 'auto', 'important');
                 } else if (scrollOffset > maxScroll) {
-                    sticky.style.position = 'absolute';
-                    sticky.style.top = 'auto';
-                    sticky.style.bottom = '0';
+                    sticky.style.setProperty('position', 'absolute', 'important');
+                    sticky.style.setProperty('top', 'auto', 'important');
+                    sticky.style.setProperty('bottom', '0', 'important');
                 } else {
-                    sticky.style.position = 'fixed';
-                    sticky.style.top = '0';
-                    sticky.style.bottom = 'auto';
+                    sticky.style.setProperty('position', 'fixed', 'important');
+                    sticky.style.setProperty('top', '0', 'important');
+                    sticky.style.setProperty('bottom', 'auto', 'important');
                 }
             }
 
