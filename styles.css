@@ -1508,70 +1508,85 @@ footer::before {
     }
 }
 
-/* Fallback loop video for mobile screens (screens <= 992px) */
+/* Mobile scroll-scrub styling (screens <= 992px) */
 .mobile-only-video {
     display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 @media (max-width: 992px) {
-    /* Hide scroll-scrubbing canvases and show auto-playing looping videos */
+    /* Ensure canvases show and mobile autoplay fallbacks are hidden */
     .hero-canvas-scrub, 
     .story-canvas {
-        display: none !important;
+        display: block !important;
     }
     
     .mobile-only-video {
-        display: block !important;
+        display: none !important;
     }
 
-    /* Disable pinning/sticky behaviors for Hero */
+    /* Snappy scroll ranges on mobile (130vh container - 100vh sticky = 30vh scroll duration) */
     .hero-scrub-wrapper {
-        height: auto !important; /* Let document scroll naturally */
+        position: relative !important;
+        height: 130vh !important; /* Extremely snappy scroll range */
+        width: 100% !important;
         background-color: var(--crema);
     }
     
     .hero-sticky-container {
-        position: relative !important;
-        height: auto !important;
-        min-height: 85vh;
-        display: flex;
-        align-items: center;
-        overflow: visible;
-        padding-top: 100px; /* Space for fixed header */
-        padding-bottom: 40px;
+        position: sticky !important;
+        top: 0 !important;
+        height: 100vh !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden !important;
     }
 
+    /* Stack Hero layout with canvas in background and text overlay on top */
     .poetry-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
-        width: 100%;
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
     }
 
     .poetry-left {
-        padding: 40px var(--container-padding) !important;
-        height: auto !important;
+        position: relative !important;
+        z-index: 5 !important;
         width: 100% !important;
-        box-sizing: border-box;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 60px var(--container-padding) !important;
+        box-sizing: border-box !important;
+        /* Premium semi-transparent backdrop to ensure high contrast and legibility over the cup */
+        background-image: linear-gradient(
+            to bottom, 
+            rgba(250, 247, 242, 0.88) 0%, 
+            rgba(250, 247, 242, 0.75) 100%
+        ) !important;
     }
 
     .poetry-right {
-        height: 380px !important; /* Solid video viewport height on mobile */
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
         width: 100% !important;
+        height: 100% !important;
+        z-index: 1 !important;
     }
 
     .poetry-hero-video-frame {
         width: 100% !important;
         height: 100% !important;
-        clip-path: url(#abstract-wavy-mobile) !important;
+        clip-path: none !important; /* Disable wavy clip path on mobile for full-bleed background */
     }
 
-    /* Disable pinning/sticky behaviors for cinematic B-rolls */
+    /* Snappy scroll ranges for cinematic B-rolls */
     .cinematic-wrapper {
-        height: auto !important; /* No scroll ranges on mobile */
+        position: relative !important;
+        height: 130vh !important; /* Extremely snappy scroll range */
         background-color: rgba(37, 30, 27, 0.95);
         padding: 0;
         margin: 0;
@@ -1579,10 +1594,11 @@ footer::before {
     }
 
     .story-sticky {
-        position: relative !important;
-        height: 60vh !important; /* Standard promotional banner aspect on mobile */
+        position: sticky !important;
+        top: 0 !important;
+        height: 100vh !important;
         width: 100% !important;
-        overflow: hidden;
+        overflow: hidden !important;
     }
 
     .story-content-container {
