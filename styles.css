@@ -1560,10 +1560,8 @@ footer::before {
         justify-content: center !important;
         padding: 60px var(--container-padding) !important;
         box-sizing: border-box !important;
-        /* Premium semi-transparent glassmorphism to show the video clearly while maintaining contrast */
-        background-color: rgba(250, 247, 242, 0.55) !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
+        /* Highly transparent crema tint with no blur to keep the coffee cup fully visible and sharp */
+        background-color: rgba(250, 247, 242, 0.15) !important;
     }
 
     .poetry-right {
