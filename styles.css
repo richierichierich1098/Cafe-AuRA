@@ -1560,12 +1560,10 @@ footer::before {
         justify-content: center !important;
         padding: 60px var(--container-padding) !important;
         box-sizing: border-box !important;
-        /* Premium semi-transparent backdrop to ensure high contrast and legibility over the cup */
-        background-image: linear-gradient(
-            to bottom, 
-            rgba(250, 247, 242, 0.88) 0%, 
-            rgba(250, 247, 242, 0.75) 100%
-        ) !important;
+        /* Premium semi-transparent glassmorphism to show the video clearly while maintaining contrast */
+        background-color: rgba(250, 247, 242, 0.55) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
     }
 
     .poetry-right {
