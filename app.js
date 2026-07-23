@@ -313,43 +313,47 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Helper to calculate scroll progress dynamically
+        function getScrollProgress(element) {
+            if (!element) return 0;
+            const rect = element.getBoundingClientRect();
+            const elementHeight = rect.height;
+            const viewportHeight = window.innerHeight;
+            
+            // If the element is sticky (on desktop), calculate progress based on pinning range
+            const isDesktop = window.innerWidth > 992;
+            if (isDesktop) {
+                const scrollDistance = -rect.top;
+                const maxScroll = elementHeight - viewportHeight;
+                if (maxScroll <= 0) return 0;
+                return Math.max(0, Math.min(scrollDistance / maxScroll, 1));
+            } else {
+                // On mobile (non-sticky), calculate progress based on viewport entry/exit
+                const totalScrollRange = viewportHeight + elementHeight;
+                const currentScroll = viewportHeight - rect.top;
+                return Math.max(0, Math.min(currentScroll / totalScrollRange, 1));
+            }
+        }
+
         // Hero calculations
         const scrubHero = document.getElementById('hero-scrub-container');
         if (scrubHero) {
-            const rect = scrubHero.getBoundingClientRect();
-            const containerHeight = rect.height;
-            const scrollDistance = -rect.top;
-            const maxScroll = containerHeight - window.innerHeight;
-            if (scrollDistance >= 0 && maxScroll > 0) {
-                const progress = Math.min(scrollDistance / maxScroll, 1);
-                targetFrameHero = Math.floor(progress * (TOTAL_FRAMES - 1));
-            }
+            const progress = getScrollProgress(scrubHero);
+            targetFrameHero = Math.floor(progress * (TOTAL_FRAMES - 1));
         }
 
         // B-Roll 1 calculations
         const scrub1 = document.getElementById('broll-scrub-container-1');
         if (scrub1) {
-            const rect = scrub1.getBoundingClientRect();
-            const containerHeight = rect.height;
-            const scrollDistance = -rect.top;
-            const maxScroll = containerHeight - window.innerHeight;
-            if (scrollDistance >= 0 && maxScroll > 0) {
-                const progress = Math.min(scrollDistance / maxScroll, 1);
-                targetFrame1 = Math.floor(progress * (TOTAL_FRAMES - 1));
-            }
+            const progress = getScrollProgress(scrub1);
+            targetFrame1 = Math.floor(progress * (TOTAL_FRAMES - 1));
         }
 
         // B-Roll 2 calculations
         const scrub2 = document.getElementById('broll-scrub-container-2');
         if (scrub2) {
-            const rect = scrub2.getBoundingClientRect();
-            const containerHeight = rect.height;
-            const scrollDistance = -rect.top;
-            const maxScroll = containerHeight - window.innerHeight;
-            if (scrollDistance >= 0 && maxScroll > 0) {
-                const progress = Math.min(scrollDistance / maxScroll, 1);
-                targetFrame2 = Math.floor(progress * (TOTAL_FRAMES - 1));
-            }
+            const progress = getScrollProgress(scrub2);
+            targetFrame2 = Math.floor(progress * (TOTAL_FRAMES - 1));
         }
     });
 
