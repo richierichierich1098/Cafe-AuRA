@@ -259,7 +259,8 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 99999 !important; /* Force to absolute top above hardware layers */
+    transform: translate3d(0, 0, 0); /* Create high priority hardware stacking context */
     padding: 25px var(--container-padding);
     display: flex;
     justify-content: space-between;
