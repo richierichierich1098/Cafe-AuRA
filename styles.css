@@ -1548,7 +1548,7 @@ footer::before {
     .poetry-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
-        grid-template-rows: 42vh 58vh !important; /* Lock bounds to fit screen height */
+        grid-template-rows: 48vh 52vh !important; /* Lock bounds to fit screen height */
         height: 100vh !important;
         width: 100% !important;
     }
@@ -1557,11 +1557,11 @@ footer::before {
         position: relative !important;
         width: 100% !important;
         height: 100% !important;
-        padding: 20px var(--container-padding) 10px var(--container-padding) !important;
+        padding: 85px var(--container-padding) 10px var(--container-padding) !important; /* Top padding clears fixed header */
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;
+        justify-content: flex-start !important; /* Align from top for precise header spacing */
         background: transparent !important;
     }
 
