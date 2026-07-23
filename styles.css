@@ -417,6 +417,7 @@ header.scrolled {
 }
 
 .hero-sticky-container {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -540,6 +541,7 @@ header.scrolled {
 }
 
 .story-sticky {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -1536,6 +1538,7 @@ footer::before {
     }
     
     .hero-sticky-container {
+        position: -webkit-sticky !important;
         position: sticky !important;
         top: 0 !important;
         height: 100vh !important;
@@ -1615,6 +1618,7 @@ footer::before {
     }
 
     .story-sticky {
+        position: -webkit-sticky !important;
         position: sticky !important;
         top: 0 !important;
         height: 100vh !important;
