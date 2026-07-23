@@ -313,26 +313,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Helper to calculate scroll progress dynamically
+        // Helper to calculate scroll progress dynamically based on pinning range
         function getScrollProgress(element) {
             if (!element) return 0;
             const rect = element.getBoundingClientRect();
             const elementHeight = rect.height;
             const viewportHeight = window.innerHeight;
-            
-            // If the element is sticky (on desktop), calculate progress based on pinning range
-            const isDesktop = window.innerWidth > 992;
-            if (isDesktop) {
-                const scrollDistance = -rect.top;
-                const maxScroll = elementHeight - viewportHeight;
-                if (maxScroll <= 0) return 0;
-                return Math.max(0, Math.min(scrollDistance / maxScroll, 1));
-            } else {
-                // On mobile (non-sticky), calculate progress based on viewport entry/exit
-                const totalScrollRange = viewportHeight + elementHeight;
-                const currentScroll = viewportHeight - rect.top;
-                return Math.max(0, Math.min(currentScroll / totalScrollRange, 1));
-            }
+            const scrollDistance = -rect.top;
+            const maxScroll = elementHeight - viewportHeight;
+            if (maxScroll <= 0) return 0;
+            return Math.max(0, Math.min(scrollDistance / maxScroll, 1));
         }
 
         // Hero calculations

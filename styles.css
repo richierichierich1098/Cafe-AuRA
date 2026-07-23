@@ -1525,59 +1525,87 @@ footer::before {
     }
 
     /* Snappy scroll ranges on mobile (130vh container - 100vh sticky = 30vh scroll duration) */
-    /* Disable sticky locking on mobile, let the document scroll naturally */
+    /* Enable sticky pinning on mobile with snappy scroll-play ranges */
     .hero-scrub-wrapper {
         position: relative !important;
-        height: auto !important;
+        height: 200vh !important; /* 2 screens of scroll-play duration */
         width: 100% !important;
         background-color: var(--crema);
     }
     
     .hero-sticky-container {
-        position: relative !important;
-        top: auto !important;
-        height: auto !important;
-        min-height: 85vh;
+        position: sticky !important;
+        top: 0 !important;
+        height: 100vh !important;
+        width: 100% !important;
         display: flex !important;
         align-items: center !important;
-        overflow: visible !important;
-        padding-top: 100px; /* Space for the header */
-        padding-bottom: 40px;
+        overflow: hidden !important;
     }
 
-    /* Stack Hero grid layout (text on top, video on bottom separated by the wave) */
+    /* Stack Hero grid layout inside 100vh viewport */
     .poetry-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 42vh 58vh !important; /* Lock bounds to fit screen height */
+        height: 100vh !important;
         width: 100% !important;
     }
 
     .poetry-left {
         position: relative !important;
         width: 100% !important;
-        height: auto !important;
-        padding: 40px var(--container-padding) !important;
+        height: 100% !important;
+        padding: 20px var(--container-padding) 10px var(--container-padding) !important;
         box-sizing: border-box !important;
-        background: transparent !important; /* No background color needed since it's stacked */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        background: transparent !important;
+    }
+
+    /* Adjust typography to fit inside 42vh viewport block */
+    .poetry-left h1 {
+        font-size: 1.85rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .poetry-left .label-sans {
+        margin-bottom: 5px !important;
+    }
+
+    .poetry-intro {
+        display: none !important; /* Hide description paragraph to save vertical space on mobile */
+    }
+
+    .poetry-ctas {
+        margin-top: 10px !important;
+        display: flex !important;
+        gap: 10px !important;
+    }
+
+    .poetry-ctas .btn-luxury {
+        padding: 10px 20px !important; /* Compact button targets */
+        font-size: 0.7rem !important;
     }
 
     .poetry-right {
         position: relative !important;
         width: 100% !important;
-        height: 380px !important; /* Solid viewport height for the coffee cup video */
+        height: 100% !important;
     }
 
     .poetry-hero-video-frame {
         width: 100% !important;
         height: 100% !important;
-        clip-path: url(#abstract-wavy-mobile) !important; /* Restore the beautiful organic wave divider */
+        clip-path: url(#abstract-wavy-mobile) !important; /* Beautiful wavy divider */
     }
 
-    /* Disable sticky scroll range locking for cinematic B-rolls */
+    /* Sticky B-Roll scroll wrappers */
     .cinematic-wrapper {
         position: relative !important;
-        height: auto !important;
+        height: 200vh !important; /* 2 screens of scroll-play duration */
         background-color: rgba(37, 30, 27, 0.95);
         padding: 0;
         margin: 0;
@@ -1585,9 +1613,9 @@ footer::before {
     }
 
     .story-sticky {
-        position: relative !important;
-        top: auto !important;
-        height: 60vh !important; /* Standard banner size on mobile */
+        position: sticky !important;
+        top: 0 !important;
+        height: 100vh !important;
         width: 100% !important;
         overflow: hidden !important;
     }
@@ -1601,6 +1629,8 @@ footer::before {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
     }
     
     .story-content {
@@ -1608,5 +1638,15 @@ footer::before {
         opacity: 1 !important;
         transform: none !important;
         pointer-events: auto !important;
+    }
+
+    /* Make B-Roll text headings responsive to fit viewport overlays */
+    .story-content h2 {
+        font-size: 2.2rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    .story-content p {
+        font-size: 0.95rem !important;
     }
 }
