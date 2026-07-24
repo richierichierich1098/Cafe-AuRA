@@ -16,7 +16,7 @@ async def capture_desktop():
         await page.wait_for_timeout(2000)
         
         shot_path = os.path.join(artifacts_dir, "desktop_hero_wave_border.jpg")
-        await page.screenshot(path=shot_path, quality=90, type="jpeg", timeout=10000)
+        await page.screenshot(path=shot_path, quality=90, type="jpeg", timeout=60000)
         print(f"Captured desktop screenshot: {shot_path}")
         
         await browser.close()
