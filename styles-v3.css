@@ -1687,3 +1687,152 @@ footer::before {
         font-size: 0.95rem !important;
     }
 }
+
+/* ==========================================
+   MOBILE RESPONSIVE OVERRIDES (max-width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Design Tokens / General Spacing Override (approx. 40% reduction) */
+    :root {
+        --section-gap: 42px !important;
+        --container-padding: 5vw !important;
+        --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        --transition-medium: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+
+    /* Global Typography Override */
+    h1, .hero-title {
+        font-size: 38px !important;
+        line-height: 1.25 !important;
+    }
+    h2, .cinematic-title, .stories-header h1, .savour-featured-title h2, .moments-left h1 {
+        font-size: 30px !important;
+        line-height: 1.3 !important;
+    }
+    h3 {
+        font-size: 20px !important;
+    }
+    body, p, .story-content p, .poetry-intro, .savour-price, .btn-luxury {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Section Spacing Overrides */
+    .stories-container,
+    .moments-container,
+    .savour-container,
+    .booking-page-container {
+        padding-top: var(--section-gap) !important;
+        padding-bottom: var(--section-gap) !important;
+    }
+
+    /* Hero Section Overrides */
+    .poetry-grid {
+        grid-template-rows: 64vh 36vh !important; /* Reduce hero image height by 30% */
+    }
+
+    .poetry-left {
+        padding-top: 70px !important;
+        padding-bottom: 10px !important;
+        justify-content: center !important;
+    }
+
+    .poetry-left h1 {
+        margin-bottom: 8px !important;
+    }
+
+    .poetry-ctas {
+        margin-top: 8px !important;
+        gap: 12px !important;
+    }
+
+    /* Radial Glowing Backgrounds (30% reduction) */
+    .savour-container {
+        background-image: radial-gradient(circle at 10% 20%, rgba(213, 182, 131, 0.1) 0%, transparent 55%) !important;
+    }
+    .moments-container {
+        background-image: radial-gradient(circle at 10% 20%, rgba(164, 80, 52, 0.15) 0%, transparent 55%) !important;
+    }
+    .booking-container {
+        background-image: radial-gradient(circle at 90% 80%, rgba(196, 154, 137, 0.08) 0%, transparent 42%) !important;
+    }
+
+    /* Card Layout & Height Scaling (Preventing Oversized Images) */
+    .stories-arch-card {
+        border-radius: 80px 80px 32px 32px !important;
+    }
+    .stories-arch-img {
+        height: 180px !important;
+        border-radius: 80px 80px 0 0 !important;
+    }
+    .savour-wavy-photo {
+        height: 350px !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+    .savour-item-img-wrap {
+        height: 160px !important;
+        border-radius: 60px 60px 0 0 !important;
+    }
+    .savour-main-grid {
+        gap: 30px !important;
+        margin-bottom: 40px !important;
+    }
+    .savour-arched-row {
+        gap: 20px !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Moments Layout Scaling */
+    .moments-wavy-layout {
+        gap: 30px !important;
+    }
+    .moments-sidebar-col {
+        gap: 30px !important;
+    }
+    .moments-center-frame {
+        max-width: 280px !important;
+        height: 380px !important;
+        border-radius: 140px !important;
+        margin: 0 auto !important;
+    }
+    .moments-features-row {
+        margin-top: 40px !important;
+        padding-top: 30px !important;
+        gap: 25px !important;
+    }
+
+    /* Reservation Layout Overrides */
+    .booking-info {
+        padding: 30px !important;
+    }
+    .booking-form-wrapper {
+        padding: 30px !important;
+    }
+
+    /* Footer Spacing Overrides */
+    footer {
+        padding: 50px var(--container-padding) 25px var(--container-padding) !important;
+    }
+    .footer-grid {
+        gap: 30px !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Touch-Friendly Spacing for Buttons */
+    .btn-luxury, .poetry-ctas .btn-luxury, button, .booking-btn {
+        min-height: 48px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px 24px !important;
+        font-size: 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Prevent horizontal scrolling and force responsive image layout */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
