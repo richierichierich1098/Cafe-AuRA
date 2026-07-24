@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctxHero.clearRect(0, 0, canvasHero.width, canvasHero.height);
             // Shift the cup center to the right (anchorX = 0.65) on desktop to stay visible in the wave
             const isDesktop = window.innerWidth > 992;
-            const anchor = isDesktop ? 0.65 : 0.5;
+            const anchor = isDesktop ? 0.38 : 0.5;
             drawImageCover(ctxHero, canvasHero, img, anchor);
         }
     }
