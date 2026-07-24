@@ -470,8 +470,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Mobile JS-based pinning manager (failsafe for CSS sticky quirks)
+        // Mobile JS-based pinning manager (disabled in favor of CSS relative layouts)
         function initMobilePinning(wrapperId, stickySelector) {
+            return; // Disabled: CSS-only layout handles mobile positioning reliably
             const wrapper = document.getElementById(wrapperId);
             if (!wrapper) return;
             const sticky = wrapper.querySelector(stickySelector);
