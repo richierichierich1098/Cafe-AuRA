@@ -518,5 +518,21 @@ document.addEventListener('DOMContentLoaded', () => {
         initMobilePinning('hero-scrub-container', '.hero-sticky-container');
         initMobilePinning('broll-scrub-container-1', '.story-sticky');
         initMobilePinning('broll-scrub-container-2', '.story-sticky');
+
+        // Mobile Signature Creations Carousel Navigation
+        const row = document.querySelector('.savour-arched-row');
+        const prevBtn = document.querySelector('.savour-carousel-controls .carousel-btn.prev');
+        const nextBtn = document.querySelector('.savour-carousel-controls .carousel-btn.next');
+        
+        if (row && prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                const slideWidth = row.clientWidth;
+                row.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                const slideWidth = row.clientWidth;
+                row.scrollBy({ left: slideWidth, behavior: 'smooth' });
+            });
+        }
     }
 });

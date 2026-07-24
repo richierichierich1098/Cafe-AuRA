@@ -1051,6 +1051,10 @@ header.scrolled {
     margin: 0 auto 80px auto;
 }
 
+.savour-carousel-controls {
+    display: none;
+}
+
 @media (max-width: 992px) {
     .savour-arched-row {
         grid-template-columns: repeat(2, 1fr);
@@ -1779,8 +1783,50 @@ footer::before {
         margin-bottom: 40px !important;
     }
     .savour-arched-row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
         gap: 20px !important;
+        margin-bottom: 25px !important;
+        padding-bottom: 10px !important;
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+    .savour-arched-row::-webkit-scrollbar {
+        display: none !important;
+    }
+    .savour-arch-item {
+        flex: 0 0 100% !important;
+        scroll-snap-align: center !important;
+        box-sizing: border-box !important;
+    }
+    .savour-carousel-controls {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        margin-top: -10px !important;
         margin-bottom: 40px !important;
+    }
+    .carousel-btn {
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 50% !important;
+        border: 1px solid var(--espresso-muted) !important;
+        background-color: var(--crema-light) !important;
+        color: var(--espresso) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        transition: var(--transition-medium) !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+    }
+    .carousel-btn:hover {
+        background-color: var(--espresso) !important;
+        color: var(--crema) !important;
     }
 
     /* Moments Layout Scaling */
