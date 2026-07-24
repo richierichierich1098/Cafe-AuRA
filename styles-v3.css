@@ -638,6 +638,9 @@ header.scrolled {
     .stories-grid-layout {
         grid-template-columns: 1fr 1fr;
     }
+    .stories-grid-layout > .stories-card-item:nth-child(3) {
+        grid-column: span 2;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1764,6 +1767,9 @@ footer::before {
     /* Card Layout & Height Scaling (Preventing Oversized Images) */
     .stories-arch-card {
         border-radius: 80px 80px 32px 32px !important;
+    }
+    .stories-grid-layout > .stories-card-item:nth-child(3) {
+        grid-column: span 1 !important;
     }
     .stories-arch-img {
         height: 220px !important;
