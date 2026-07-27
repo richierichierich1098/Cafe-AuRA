@@ -1952,26 +1952,24 @@ footer::before {
         display: none !important; /* Hide overlay filter on mobile since text sits on solid espresso background */
     }
 
-    /* Hide preloaded canvases on mobile and display native MP4 loops */
-    .hero-canvas-scrub, 
-    .story-canvas {
+    /* Hide mobile video loops on mobile now that canvas frames are re-enabled */
+    .mobile-only-video {
         display: none !important;
     }
 
-    /* Hero section video covers bottom row */
-    .poetry-right .mobile-only-video {
+    /* Display canvas sequences on mobile */
+    .hero-canvas-scrub {
         display: block !important;
         position: absolute !important;
         top: 0;
         left: 0;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
         z-index: 1 !important;
     }
 
-    /* Story B-roll inline videos stack natively below text */
-    .story-sticky .mobile-only-video {
+    /* Story canvas preloader elements stack natively below text */
+    .story-sticky .story-canvas {
         display: block !important;
         position: relative !important;
         top: auto !important;
@@ -1979,7 +1977,6 @@ footer::before {
         width: 100% !important;
         height: 56.25vw !important; /* Perfect 16:9 Aspect Ratio */
         max-height: 400px !important;
-        object-fit: cover !important;
         z-index: 1 !important;
         margin: 0 !important;
         border-radius: 0 !important;
