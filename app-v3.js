@@ -95,6 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetFrameHero = 0;
     let currentFrameHero = 0;
 
+    // Mobile video scrub states
+    let targetTimeHero = 0;
+    let currentTimeHero = 0;
+    let targetTime1 = 0;
+    let currentTime1 = 0;
+    let targetTime2 = 0;
+    let currentTime2 = 0;
+
     // Canvas 1 references (Ad 1.mp4)
     const canvas1 = document.getElementById('broll-canvas-1');
     const ctx1 = canvas1 ? canvas1.getContext('2d') : null;
@@ -252,23 +260,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function tick() {
-        if (preloadedHero) {
-            currentFrameHero += (targetFrameHero - currentFrameHero) * 0.15;
-            if (Math.abs(targetFrameHero - currentFrameHero) < 0.01) currentFrameHero = targetFrameHero;
-            drawFrameHero();
-        }
-        if (preloaded1) {
-            currentFrame1 += (targetFrame1 - currentFrame1) * 0.15;
-            if (Math.abs(targetFrame1 - currentFrame1) < 0.01) currentFrame1 = targetFrame1;
-            drawFrame1();
-        }
-        if (preloaded2) {
-            currentFrame2 += (targetFrame2 - currentFrame2) * 0.15;
-            if (Math.abs(targetFrame2 - currentFrame2) < 0.01) currentFrame2 = targetFrame2;
-            drawFrame2();
+        const isMobile = window.innerWidth <= 992;
+        
+        if (isMobile) {
+            // Smoothly interpolate mobile video playback times on scroll
+            const scrubHero = document.getElementById('hero-scrub-container');
+            const videoHero = scrubHero ? scrubHero.querySelector('.mobile-only-video') : null;
+            if (videoHero && videoHero.duration && !isNaN(videoHero.duration)) {
+                videoHero.pause();
+                currentTimeHero += (targetTimeHero - currentTimeHero) * 0.1;
+                if (Math.abs(targetTimeHero - currentTimeHero) < 0.005) currentTimeHero = targetTimeHero;
+                videoHero.currentTime = currentTimeHero;
+            }
+
+            const scrub1 = document.getElementById('broll-scrub-container-1');
+            const video1 = scrub1 ? scrub1.querySelector('.mobile-only-video') : null;
+            if (video1 && video1.duration && !isNaN(video1.duration)) {
+                video1.pause();
+                currentTime1 += (targetTime1 - currentTime1) * 0.1;
+                if (Math.abs(targetTime1 - currentTime1) < 0.005) currentTime1 = targetTime1;
+                video1.currentTime = currentTime1;
+            }
+
+            const scrub2 = document.getElementById('broll-scrub-container-2');
+            const video2 = scrub2 ? scrub2.querySelector('.mobile-only-video') : null;
+            if (video2 && video2.duration && !isNaN(video2.duration)) {
+                video2.pause();
+                currentTime2 += (targetTime2 - currentTime2) * 0.1;
+                if (Math.abs(targetTime2 - currentTime2) < 0.005) currentTime2 = targetTime2;
+                video2.currentTime = currentTime2;
+            }
+        } else {
+            if (preloadedHero) {
+                currentFrameHero += (targetFrameHero - currentFrameHero) * 0.15;
+                if (Math.abs(targetFrameHero - currentFrameHero) < 0.01) currentFrameHero = targetFrameHero;
+                drawFrameHero();
+            }
+            if (preloaded1) {
+                currentFrame1 += (targetFrame1 - currentFrame1) * 0.15;
+                if (Math.abs(targetFrame1 - currentFrame1) < 0.01) currentFrame1 = targetFrame1;
+                drawFrame1();
+            }
+            if (preloaded2) {
+                currentFrame2 += (targetFrame2 - currentFrame2) * 0.15;
+                if (Math.abs(targetFrame2 - currentFrame2) < 0.01) currentFrame2 = targetFrame2;
+                drawFrame2();
+            }
         }
         requestAnimationFrame(tick);
     }
+
+    // Always start tick animation loop for mobile video scrubbing
+    requestAnimationFrame(tick);
 
     const isDesktopDevice = window.innerWidth > 992;
     if (isDesktopDevice && (canvasHero || canvas1 || canvas2)) {
@@ -276,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
         preloadSequence1();
         preloadSequence2();
         window.addEventListener('resize', resizeCanvas);
-        requestAnimationFrame(tick);
     }
 
 
@@ -326,6 +368,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.max(0, Math.min(scrollDistance / maxScroll, 1));
         }
 
+        function getMobileScrollProgress(element) {
+            if (!element) return 0;
+            const rect = element.getBoundingClientRect();
+            const elementHeight = rect.height;
+            const viewportHeight = window.innerHeight;
+            const totalDistance = viewportHeight + elementHeight;
+            const currentDistance = viewportHeight - rect.top;
+            const progress = currentDistance / totalDistance;
+            return Math.max(0, Math.min(progress, 1));
+        }
+
         // Desktop-only canvas scroll calculations
         if (window.innerWidth > 992) {
             // Hero calculations
@@ -347,6 +400,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (scrub2) {
                 const progress = getScrollProgress(scrub2);
                 targetFrame2 = Math.floor(progress * (TOTAL_FRAMES - 1));
+            }
+        } else {
+            // Mobile-only video scrubbing scroll updates
+            const scrubHero = document.getElementById('hero-scrub-container');
+            const videoHero = scrubHero ? scrubHero.querySelector('.mobile-only-video') : null;
+            if (scrubHero && videoHero && videoHero.duration && !isNaN(videoHero.duration)) {
+                const progress = getMobileScrollProgress(scrubHero);
+                targetTimeHero = progress * videoHero.duration;
+            }
+
+            const scrub1 = document.getElementById('broll-scrub-container-1');
+            const video1 = scrub1 ? scrub1.querySelector('.mobile-only-video') : null;
+            if (scrub1 && video1 && video1.duration && !isNaN(video1.duration)) {
+                const progress = getMobileScrollProgress(scrub1);
+                targetTime1 = progress * video1.duration;
+            }
+
+            const scrub2 = document.getElementById('broll-scrub-container-2');
+            const video2 = scrub2 ? scrub2.querySelector('.mobile-only-video') : null;
+            if (scrub2 && video2 && video2.duration && !isNaN(video2.duration)) {
+                const progress = getMobileScrollProgress(scrub2);
+                targetTime2 = progress * video2.duration;
             }
         }
     });
