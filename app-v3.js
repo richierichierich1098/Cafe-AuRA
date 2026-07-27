@@ -270,7 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(tick);
     }
 
-    if (canvasHero || canvas1 || canvas2) {
+    const isDesktopDevice = window.innerWidth > 992;
+    if (isDesktopDevice && (canvasHero || canvas1 || canvas2)) {
         preloadSequenceHero();
         preloadSequence1();
         preloadSequence2();
@@ -325,25 +326,28 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.max(0, Math.min(scrollDistance / maxScroll, 1));
         }
 
-        // Hero calculations
-        const scrubHero = document.getElementById('hero-scrub-container');
-        if (scrubHero) {
-            const progress = getScrollProgress(scrubHero);
-            targetFrameHero = Math.floor(progress * (TOTAL_FRAMES - 1));
-        }
+        // Desktop-only canvas scroll calculations
+        if (window.innerWidth > 992) {
+            // Hero calculations
+            const scrubHero = document.getElementById('hero-scrub-container');
+            if (scrubHero) {
+                const progress = getScrollProgress(scrubHero);
+                targetFrameHero = Math.floor(progress * (TOTAL_FRAMES - 1));
+            }
 
-        // B-Roll 1 calculations
-        const scrub1 = document.getElementById('broll-scrub-container-1');
-        if (scrub1) {
-            const progress = getScrollProgress(scrub1);
-            targetFrame1 = Math.floor(progress * (TOTAL_FRAMES - 1));
-        }
+            // B-Roll 1 calculations
+            const scrub1 = document.getElementById('broll-scrub-container-1');
+            if (scrub1) {
+                const progress = getScrollProgress(scrub1);
+                targetFrame1 = Math.floor(progress * (TOTAL_FRAMES - 1));
+            }
 
-        // B-Roll 2 calculations
-        const scrub2 = document.getElementById('broll-scrub-container-2');
-        if (scrub2) {
-            const progress = getScrollProgress(scrub2);
-            targetFrame2 = Math.floor(progress * (TOTAL_FRAMES - 1));
+            // B-Roll 2 calculations
+            const scrub2 = document.getElementById('broll-scrub-container-2');
+            if (scrub2) {
+                const progress = getScrollProgress(scrub2);
+                targetFrame2 = Math.floor(progress * (TOTAL_FRAMES - 1));
+            }
         }
     });
 
